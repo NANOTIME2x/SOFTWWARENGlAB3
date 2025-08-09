@@ -1,0 +1,86 @@
+{% load custom_filters %}
+
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8" />
+    <title>تجربة الفلاتر المخصصة في Django</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            direction: rtl;
+            background: #f9f9f9;
+            color: #333;
+        }
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+        section {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 0 10px #ccc;
+        }
+        mark {
+            background-color: #ffea00;
+            color: #000;
+            padding: 0 4px;
+            border-radius: 3px;
+        }
+        code {
+            background: #eee;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 0.9em;
+        }
+        .example-text {
+            font-size: 1.1em;
+            margin: 15px 0;
+        }
+        .explanation {
+            font-size: 0.95em;
+            color: #555;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>شرح واختبار الفلاتر المخصصة في Django</h1>
+
+<section>
+    <h2>1. فلتر <code>highlight</code></h2>
+    <p>هذا الفلتر يقوم بتمييز كلمة معينة داخل نص بإضافة علامة تمييز <code>&lt;mark&gt;</code> حولها، مما يجعل الكلمة تظهر بلون خلفية مميز.</p>
+    <p class="example-text">النص الأصلي: <strong>مرحباً بكم في دورة Django الرائعة لتعلم البرمجة</strong></p>
+    <p class="example-text">النص بعد تطبيق الفلتر لتمييز كلمة <code>"django"</code>:</p>
+    <p class="example-text">{{ "مرحباً بكم في دورة Django الرائعة لتعلم البرمجة"|highlight:"django" }}</p>
+    <div class="explanation">
+        تلاحظ أن كلمة <mark>Django</mark> أصبحت مميزة بلون أصفر، وهذا يسهل على المستخدم رؤية الكلمة المهمة.
+    </div>
+</section>
+
+<section>
+    <h2>2. فلتر <code>relative_date_ar</code></h2>
+    <p>هذا الفلتر يعرض التاريخ والوقت بشكل نسبي باللغة العربية، مثلاً <em>منذ 3 أيام</em> أو <em>بعد يومين</em> بدلاً من التاريخ الكامل.</p>
+    <p class="example-text">التاريخ الحالي: <strong>{{ now }}</strong></p>
+    <p class="example-text">مثال على تاريخ في الماضي (قبل 3 أيام): <strong>{{ past_date|relative_date_ar }}</strong></p>
+    <p class="example-text">مثال على تاريخ في المستقبل (بعد يومين): <strong>{{ future_date|relative_date_ar }}</strong></p>
+    <div class="explanation">
+        هذا الفلتر يجعل عرض التواريخ أسهل للفهم وأكثر طبيعية عند القراءة.
+    </div>
+</section>
+
+<section>
+    <h2>ملاحظات عامة</h2>
+    <ul>
+        <li>يمكنك استخدام فلتر <code>highlight</code> لتمييز كلمات معينة داخل أي نص في القوالب.</li>
+        <li>فلتر <code>relative_date_ar</code> مفيد جداً لعرض التواريخ بطريقة ودودة للمستخدمين العرب.</li>
+        <li>يمكنك تعديل أو تحسين الفلاتر حسب حاجتك بسهولة في ملف <code>custom_filters.py</code>.</li>
+    </ul>
+</section>
+
+</body>
+</html>
